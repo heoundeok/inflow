@@ -1,31 +1,27 @@
+import "./globals.css";
 // next
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 // components
-import { Toaster } from "@/components/ui/sonner";
-import { ThemeProvider } from "@/providers";
+import { Provider } from "@/providers/provider";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "대시보드 | 메이드액트",
-  description: "메이드액트",
+  title: "크날 AI",
+  description: "CMS like Notion, Component like Imweb for Framer",
 };
 
-export default function Layout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // setting layout
   return (
-    <main>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        {children}
-        <Toaster />
-      </ThemeProvider>
-    </main>
+    <html lang="ko">
+      <body className={`${inter.className}`}>
+        <Provider>{children}</Provider>
+      </body>
+    </html>
   );
 }
