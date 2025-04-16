@@ -22,8 +22,8 @@ export async function GET(request: Request) {
         .eq("user_id", sessionData.user.id);
 
       if (profiles?.length === 0) {
-        next = "/onboarding/profile";
-        const {  } = await supabase
+        next = "/";
+        const {} = await supabase
           .from("profiles")
           .insert([
             {
